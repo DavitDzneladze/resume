@@ -6,6 +6,8 @@ import {
   BelongsToMany,
 } from "sequelize-typescript";
 import { ApiProperty } from "@nestjs/swagger/dist/decorators";
+import { Role } from "src/roles/roles.model";
+import { UserRoles } from "src/roles/user-roles.model";
 
 interface UserCreationAttributes {
   email: string;
@@ -54,4 +56,7 @@ export class User extends Model<User, UserCreationAttributes> {
     allowNull: true,
   })
   banReason: string;
+
+  @BelongsToMany(() => Role, () => UserRoles)
+  roles: Role[];
 }
