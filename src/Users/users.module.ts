@@ -8,6 +8,7 @@ import { Role } from "src/roles/roles.model";
 import { UserRoles } from "src/roles/user-roles.model";
 import { RolesModule } from "src/roles/roles.module";
 import { AuthModule } from "src/auth/auth.module";
+import { CreateUserDto } from "./dto/create-user.dto";
 
 @Module({
   controllers: [UsersController],
@@ -17,6 +18,6 @@ import { AuthModule } from "src/auth/auth.module";
     RolesModule,
     forwardRef(() => AuthModule),
   ],
-  exports: [UsersService, User],
+  exports: [UsersService, User, CreateUserDto],
 })
 export class UsersModule {}
